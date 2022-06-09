@@ -1,10 +1,9 @@
 package com.cibertec.CL2_Ecommerce_JoelSiguenza.service;
 
-import java.util.List;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.cibertec.CL2_Ecommerce_JoelSiguenza.model.Producto;
 import com.cibertec.CL2_Ecommerce_JoelSiguenza.repository.ProductoDAO;
 
@@ -35,5 +34,5 @@ public class ProductoServiceImpl implements ProductoService{
 		return  (List<Producto>) productoDAO.findAll();
 	}
 
-	
+		
 }

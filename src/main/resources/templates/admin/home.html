@@ -32,7 +32,7 @@
 		
 			<div class="col-lg-3 col-md-6 mb-4" th:each="p:${productos}">
 				<div class="card h-100">
-					<img class="card-img-top" src="https://e39a9f00db6c5bc097f9-75bc5dce1d64f93372e7c97ed35869cb.ssl.cf1.rackcdn.com/42471004-zjXcIS84-large.jpg">
+					<img class="card-img-top" th:src="@{'/imagesCL2/'+${p.imagen}}" th:alt="${p.imagen}">
 					<div class="card-body">
 					<h5>Nombre del producto:</h5><p class="card-text" th:text="${p.nombre}"></p>					
 					<h6>Precio:</h6><p class="card-text" th:text="'S/.'+ ${p.precio}"></p>

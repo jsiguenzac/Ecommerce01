@@ -24,7 +24,7 @@
 	
 	<h2>Crear Producto</h2>
 	
-		<form method="POST" th:action="@{/productos/grabar}" enctype="multipart/form-data" autocomplete="off" th:object="${productos}">
+		<form method="POST" th:action="@{/productos/grabar}" enctype="multipart/form-data" th:object="${productos}">
 	  <div class="form-row">
 	      <input type="hidden" class="form-control" id="idProducto" name="idProducto" th:field="*{idProducto}">
 	    
@@ -52,7 +52,7 @@
 		<div class="form-row">
 	  <div class="form-group col-md-4">
 	    <label for="imagen">Adjuntar imagen</label>
-	    <input type="file" class="form-control-file" id="imagen" name="imagen">
+	    <input type="file" class="form-control-file" name="file">
 	  </div>
 		</div>
 	  <a th:href="@{/productos}"><button type="button" class="btn btn-danger">Cancelar</button></a> |
