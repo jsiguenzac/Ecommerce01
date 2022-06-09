@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      >
+<head>
+<meta charset="utf-8">
+<title>Ecommerce | Listado Productos</title>
+
+ <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script  th:src="@{/webjars/jquery/jquery.min.js}"></script>      
+        <script  th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>      
+        <script  th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>      
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+ <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+ <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+</head>
+<body>
+
+
+<nav th:replace="layout/plantilla :: nav"></nav>
+
+<div class="container"><hr>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>PRODUCTOS</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">  
+	     		<a th:href="@{/productos/nuevo}">
+	     		<button type="button" class="btn btn-sm  ml-auto btn-success">
+	                AGREGAR NUEVO <i class="fas fa-plus"></i> 
+	              </button>  
+	             </a>  | 
+	              <a th:href="@{/admin}">
+	              <button type="button" class="btn btn-sm  ml-auto btn-warning">
+	                REGRESAR <i class="fa-solid fa-arrow-left-long"></i>
+	              </button>   
+	              </a>   
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                  <!-- /.card -->
+              <div class="card">
+                  <div class="card-header">
+                    <h4 class="card-title">Productos agregados</h4>
+                  </div>
+                <div class="card-body">
+                  <div class="table-responsive">                         
+                    <!--Tabla-->
+                    <table id="tableProductos" class="table table-bordered table-hover table-striped">
+                        <thead class="table-dark">
+                          <tr style="text-align: center;">
+                          <th>Nº</th>
+                          <th>NOMBRE</th>
+                          <th>DESCRIPCION</th>
+                          <th style="display: none;"></th>
+                          <th>PRECIO</th>
+                          <th>CANTIDAD</th>
+                          <th>ACCIONES</th>
+                          </tr>
+                        </thead>
+                        <tbody style="text-align: center;">
+                          <tr th:each="p:${productos}">
+                          	<td th:text="${p.idProducto}"></td>
+                          	<td th:text="${p.nombre}"></td>
+                          	<td th:text="${p.descripcion}"></td>
+                          	<td th:text="${p.imagen}" style="display: none;"></td>
+                          	<td th:text="${p.precio}"></td>
+                          	<td th:text="${p.cantidad}"></td>
+                          	<td>
+	                  			<a th:href="@{/productos/editar/} + ${p.idProducto}" class="btn btn-info">					     		
+					               <i class="fa-solid fa-pen-to-square"></i>				              
+					             </a>  | 
+					              <a th:href="@{/productos/eliminar/} + ${p.idProducto}" class="btn btn-danger">
+					               <i class="fa-solid fa-trash-can"></i>					              
+					              </a>   
+                          	</td>
+                          </tr>
+                        </tbody>
+                    </table>                    
+                  </div>
+                </div>
+              <!-- /.card-body -->
+              </div>
+            </div>
+        </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+</section>
+</div>
+<footer th:replace="layout/plantilla :: footer"></footer>
+   
+   <script>
+   $(document).ready(function () {
+    $('#tableProductos').DataTable({
+	language: {
+        url: 'https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json'
+	}
+});
+});
+   </script> 
+    
+</body>
+</html>

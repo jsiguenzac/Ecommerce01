@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      >
+<head>
+<meta charset="utf-8">
+<title>Inicio | Ecommerce</title>
+
+ <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script  th:src="@{/webjars/jquery/jquery.min.js}"></script>      
+        <script  th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>      
+        <script  th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>      
+
+</head>
+<body>
+
+
+<nav th:replace="layout/plantilla :: nav"></nav>
+
+<div class="container">
+	
+	<header class="jumbotron my-4">
+		<img class="card-img-top" src="https://plazavea.vteximg.com.br/arquivos/Banner-HotSale-HP-D-06-12JUNIO-C.jpg" alt="logo">
+		<h3 class="display-3 text-center">Ecommerce de productos</h3>		
+	</header>
+		
+	
+		<div class="row text-center">
+		
+			<div class="col-lg-3 col-md-6 mb-4" th:each="p:${productos}">
+				<div class="card h-100">
+					<img class="card-img-top" src="https://e39a9f00db6c5bc097f9-75bc5dce1d64f93372e7c97ed35869cb.ssl.cf1.rackcdn.com/42471004-zjXcIS84-large.jpg">
+					<div class="card-body">
+					<h5>Nombre del producto:</h5><p class="card-text" th:text="${p.nombre}"></p>					
+					<h6>Precio:</h6><p class="card-text" th:text="'S/.'+ ${p.precio}"></p>
+					<p class="card-text" th:text="'Descripción: '+ ${p.descripcion}"></p>
+					</div>
+					
+					<div class="card-footer">
+						<a href="#" class="btn btn-success">Ver Producto</a>
+					</div>					
+				</div>
+			</div>
+				
+						
+		</div>	
+</div>
+
+<footer th:replace="layout/plantilla :: footer"></footer>
+    
+</body>
+</html>
