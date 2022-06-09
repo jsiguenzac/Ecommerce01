@@ -14,5 +14,4 @@ public interface ProductoService {
 	 
 	public List<Producto> listarProductos();
 	
-	
 }

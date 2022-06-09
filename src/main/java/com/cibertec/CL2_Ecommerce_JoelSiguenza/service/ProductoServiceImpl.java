@@ -35,4 +35,5 @@ public class ProductoServiceImpl implements ProductoService{
 		return  (List<Producto>) productoDAO.findAll();
 	}
 
+	
 }
