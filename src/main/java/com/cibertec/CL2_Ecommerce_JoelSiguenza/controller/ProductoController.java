@@ -43,7 +43,7 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/grabar")
-	public String guardar(@RequestParam(name = "file", required = false) MultipartFile imagen, Producto p){
+	public String guardar(@RequestParam(name = "file", required = true) MultipartFile imagen, Producto p){
 		
 		if (!imagen.isEmpty()) {
 			String ruta = "D://imagesCL2";
@@ -59,10 +59,8 @@ public class ProductoController {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-			
-		}
-		
+			}			
+		}		
 		productoService.guardar(p);
 		return "redirect:/productos";
 	}
@@ -81,6 +79,15 @@ public class ProductoController {
 	    productoService.eliminar(p);
 	    return "redirect:/productos";	    
 	}
+	
+	/////////DETALLE
+	@GetMapping("/detalle/{idProducto}")
+	public String detallePro(@PathVariable Long idProducto) {
+		
+		return "productos/detalleProducto";
+	}
+	
+	
 	
 	
 	

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      >
+<head>
+<meta charset="utf-8">
+<title>Inicio | Ecommerce</title>
+
+ <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script  th:src="@{/webjars/jquery/jquery.min.js}"></script>      
+        <script  th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>      
+        <script  th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>      
+
+</head>
+<body>
+
+
+<nav th:replace="layout/plantilla :: nav"></nav>
+
+<div class="container">
+				
+	<h2 class="mt-4 mb-3">Ecommerce <small>Producto</small></h2>
+	
+	<div class="card mb-4">
+		<div class="card-body">
+			<div class="row">
+				<div class="col-lg-6">
+				
+						<img class="img-fluid rounded" src="" alt="" width="500" height="325">
+					
+				</div>
+				<div class="col-lg-6">
+					<form action="" method="POST">
+						<h2 class="card-title">Nombre producto</h2>
+						
+						<ul class="list-group">
+							<li class="list-group-item"> <h5>Precio</h5></li>
+							<li class="list-group-item"> <h5>Descripción</h5></li>
+							<li class="list-group-item"> <h5>Cantidad</h5>
+								<input type="number" id="cantidad" name="cantidad" autocomplete="off" min="1">
+							</li>
+						</ul><hr>
+						<div style="text-align: center;">
+						<a th:href="@{/admin}"  class="btn btn-info">Regresar</a>
+						<button type="submit" class="btn btn-warning">Añadir al Carrito</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+			
+</div>
+
+<footer th:replace="layout/plantilla :: footer"></footer>
+    
+</body>
+</html>
