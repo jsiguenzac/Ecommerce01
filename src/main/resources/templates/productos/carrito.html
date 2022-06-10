@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      >
+<head>
+<meta charset="utf-8">
+<title>Ecommerce | Carrito</title>
+
+ <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script  th:src="@{/webjars/jquery/jquery.min.js}"></script>      
+        <script  th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>      
+        <script  th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>      
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+ <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+ <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+</head>
+<body>
+
+
+<nav th:replace="layout/plantilla :: nav"></nav>
+
+<div class="container"><hr>
+   
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                  <!-- /.card -->
+              <div class="card">
+                  <div class="card-header">
+                    <h4 class="card-title">Productos en el Carrito</h4>
+                  </div>
+                <div class="card-body">
+                  <div class="table-responsive">                         
+                    <!--Tabla-->
+                    <table id="tableCar" class="table table-bordered table-hover table-striped">
+                        <thead class="table-dark">
+                          <tr style="text-align: center;">
+	                          <th scope="col">IMAGEN</th>
+	                          <th scope="col">NOMBRE</th>                        
+	                          <th scope="col">PRECIO</th>
+	                          <th scope="col">CANTIDAD</th>
+	                          <th scope="col">SUBTOTAL</th>
+	                          <th>ACCION</th>
+                          </tr>
+                        </thead>
+                        <tbody style="text-align: center;">
+                          <tr >
+                          	<td>
+                          		<img  alt="" width="80" height="50">
+                          	</td>
+                          	<td >nngn</td>
+                          	<td >3456</td>
+                          	<td >10</td>
+                          	<td >10</td>
+                          	<td> 
+				              <a href="#" class="btn btn-danger">
+				               Quitar<i class="fa-solid fa-trash-can"></i>					              
+				              </a>   
+                          	</td>
+                          </tr>
+                        </tbody>
+                    </table>                    
+                  </div>
+                </div>
+              <!-- /.card-body -->
+              		<div class="col-lg-3">
+              			<h2 class="card-title">TOTAL</h2>
+              			<ul>
+              				<li class="list-group-item"><h3></h3></li>
+              				
+              			</ul>
+              		</div>
+              
+              		
+              </div>
+            </div>
+        </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+</section>
+</div>
+<footer th:replace="layout/plantilla :: footer"></footer>
+   
+   <script>
+   $(document).ready(function () {
+    $('#tableCar').DataTable({
+	language: {
+        url: 'https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json'
+	}
+});
+});
+   </script> 
+    
+2</body>
+</html>

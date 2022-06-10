@@ -29,8 +29,7 @@ public class ProductoController {
 	
 
 	@GetMapping("")
-	public String listadoPro(Model model) {
-		
+	public String listadoPro(Model model) {		
 		model.addAttribute("productos", productoService.listarProductos());
 		return "productos/listarProductos";
 	}
@@ -46,14 +45,12 @@ public class ProductoController {
 	public String guardar(@RequestParam(name = "file", required = true) MultipartFile imagen, Producto p){
 		
 		if (!imagen.isEmpty()) {
-			String ruta = "D://imagesCL2";
+			String ruta = "images/";
 			
 			try {
 				byte [] byteImg = imagen.getBytes();
-				Path rutaAbsoluta= Paths.get(ruta + "//" + imagen.getOriginalFilename());
-				
-				Files.write(rutaAbsoluta, byteImg);
-				
+				Path rutaAbsoluta= Paths.get(ruta + "//" + imagen.getOriginalFilename());				
+				Files.write(rutaAbsoluta, byteImg);				
 				p.setImagen(imagen.getOriginalFilename());
 				
 			} catch (IOException e) {
@@ -82,11 +79,19 @@ public class ProductoController {
 	
 	/////////DETALLE
 	@GetMapping("/detalle/{idProducto}")
-	public String detallePro(@PathVariable Long idProducto) {
+	public String detallePro(Producto p, @PathVariable Long idProducto, Model model) {
 		
+		Producto pro = productoService.encontrarProducto(p);		
+		model.addAttribute("p", pro);
 		return "productos/detalleProducto";
 	}
 	
+	/////CARRITO
+	@PostMapping("/addCar")
+	public String carrito(Producto p,  Model model) {
+		
+		return "productos/carrito";
+	}
 	
 	
 	

@@ -28,23 +28,24 @@
 	</header>
 		
 	
-		<div class="row text-center">
-		
+		<div class="row text-center">		
 			<div class="col-lg-3 col-md-6 mb-4" th:each="p:${productos}">
 				<div class="card h-100">
-					<img class="card-img-top" th:src="@{'/imagesCL2/'+${p.imagen}}" th:alt="${p.imagen}">
+					<img class="card-img-top" th:src="@{'images/'+${p.imagen}}" th:alt="${p.imagen}">
 					<div class="card-body">
-					<h5>Nombre del producto:</h5><p class="card-text" th:text="${p.nombre}"></p>					
-					<h6>Precio:</h6><p class="card-text" th:text="'S/.'+ ${p.precio}"></p>
-					<p class="card-text" th:text="'Descripción: '+ ${p.descripcion}"></p>
-					</div>
-					
+					<h5><p class="card-text" th:text="${p.nombre}"></p></h5>				
+					<h6>Precio:<p class="card-text" th:text="'S/.'+ ${p.precio}"></p></h6>
+					<h6><p class="card-text" th:text="'Descripción: '+ ${p.descripcion}"></p></h6>
+					</div>					
 					<div class="card-footer">
 						<a th:href="@{/productos/detalle/} + ${p.idProducto}" class="btn btn-success">Ver Producto</a>
-					</div>					
+					</div>											
 				</div>
 			</div>
-				
+		
+					<div class="text-center p-2"  th:if="${productos == null or productos.empty }">                                
+                                <span>NINGUN PRODUCTO EN LISTA</span>                                
+                    </div>		
 						
 		</div>	
 </div>
