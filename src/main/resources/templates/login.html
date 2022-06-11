@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      >
+<head>
+<meta charset="utf-8">
+<title>Login | Ecommerce</title>
+<link rel="stylesheet" href="/css/login.css"/>
+ <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script  th:src="@{/webjars/jquery/jquery.min.js}"></script>      
+        <script  th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>      
+        <script  th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>      
+
+</head>
+<body>
+
+<div class="container">
+  <div class="clear"></div>
+   <form method="POST"  th:action="@{/login}" autocomplete="off">
+				<h4>USUARIO</h4>
+    <div class="input-group input-group-icon">
+				<input class="lemail" type="text" name="username" id="username"  placeholder="USUARIO" required>
+    <div class="input-icon"><i class="fa fa-envelope"></i></div>
+      </div>
+				<h4> CONTRASEÑA </h4>
+    <div class="input-group input-group-icon">
+				<input class="lpassword" type="password" name="password" id="password" placeholder="CONTRASEÑA" required>
+      <div class="input-icon"><i class="fa fa-key"></i></div>
+      </div>
+				<div class="clear"></div><br>
+				<button type="submit" class="btn btn-success btn-block" >INICIAR SESIÓN  <i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+				<button type="button" class="btn btn-light btn-block" >REGISTRARSE <i class="fa-solid fa-database"></i></button>
+			</form>
+  </div>
+ 
+</body>
+</html>

@@ -64,9 +64,9 @@
                         <thead class="table-dark">
                           <tr style="text-align: center;">
                           <th>Nº</th>
+                          <th>IMAGEN</th>
                           <th>NOMBRE</th>
                           <th>DESCRIPCION</th>
-                          <th style="display: none;"></th>
                           <th>PRECIO</th>
                           <th>CANTIDAD</th>
                           <th>ACCIONES</th>
@@ -75,9 +75,11 @@
                         <tbody style="text-align: center;">
                           <tr th:each="p:${productos}">
                           	<td th:text="${p.idProducto}"></td>
+                          	<td>
+                          		<img th:src="@{'images/'+${p.imagen}}" th:alt="${p.imagen}" width="80" height="50">
+                          	</td>
                           	<td th:text="${p.nombre}"></td>
                           	<td th:text="${p.descripcion}"></td>
-                          	<td th:text="${p.imagen}" style="display: none;"></td>
                           	<td th:text="${p.precio}"></td>
                           	<td th:text="${p.cantidad}"></td>
                           	<td>

@@ -36,39 +36,40 @@
                   </div>
                 <div class="card-body">
                   <div class="table-responsive">                         
-                    <!--Tabla -->
+                    <!--Tabla-->
                     <table id="tableCar" class="table table-bordered table-hover table-striped">
                         <thead class="table-dark">
-                          <tr style="text-align: center;">   
-                           	<th scope="col">ID PRODUCTO</th>  
-                           	 <th scope="col">NOMBRE</th> 
-                           	 <th scope="col">DESCRIPCION</th>   	
+                          <tr style="text-align: center;">  
+                           	<th scope="col">IMAGEN</th>  
+                           	 <th scope="col">NOMBRE</th>    
+	                          <th scope="col">PRECIO</th>	                           
+	                          <th scope="col">CANTIDAD</th>
                           </tr>
                         </thead>
-                        <tbody  style="text-align: center;">                                                
-	                        <tr id="cuerpo">  
-	                                              	
-	                         </tr>                          
+                        <tbody style="text-align: center;">                        
+                         <tr>
+                          	<td>
+                          		<img th:src="@{'/images/'+${p.imagen}}" th:alt="${p.imagen}" width="80" height="50">
+                          	</td>
+                          	<td th:text="${p.nombre}"></td>
+                          	<td th:text="${p.precio}"></td>
+                          	<td th:text="${cant}"></td>
+                          </tr>
                         </tbody>
-                    </table>        		                     		                      
+                    </table> 
 		                                      
                   </div>
                   
            			<div class="card" style="text-align: center;"> 
               			<div class="card-header">
-                   	 <h2 class="card-title">
-                   	 	<img th:src="@{'/images/'+${p.imagen}}" th:alt="${p.imagen}" width="80" height="80">
-                          	
-                   	 TOTAL</h2>
+                   	 <h2 class="card-title">TOTAL</h2>
                   		</div>
                			<div class="card-body">
               			<ul>
-              			<input type="hidden" id="idProducto" name="idProducto" th:value="${p.idProducto}">
-                         
-              				<h4 id="precio"></h4>
+              				<h4><p th:text="'S/.'+${total}"></p></h4>
               				<hr>
               				<div style="text-align: center;">
-              				<a class="btn btn-success btn-compra">COMPRAR</a>
+              				<a class="btn btn-success btn-compra" onclick="">COMPRAR</a>
               				 <a th:href="@{/productos/detalle/} + ${p.idProducto}" class="btn btn-danger">
 					               Atras					              
 					              </a>
@@ -89,9 +90,11 @@
 </section>
 </div>
 <footer th:replace="layout/plantilla :: footer"></footer>
- 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
- <script src="/js/carrito.js"></script>       
+    
+    <!-- jQuery library -->
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="/js/carrito.js"></script>        
  <!--ALERTS-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>   
 </body>

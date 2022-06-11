@@ -34,19 +34,22 @@
 					
 				</div>
 				<div class="col-lg-6">
-					<form th:action="@{/api/producto/}+${p.idProducto}" method="POST">
+					<form th:action="@{/productos/Carrito/}+${p.idProducto}" method="POST">
 						<h2 class="card-title" th:text="${p.nombre}"></h2>
 						
 						<ul class="list-group">
+						<input type="hidden" id="idProducto" name="idProducto" th:value="${p.idProducto}">
 							<li class="list-group-item"> <h5>Precio <p th:text="'S/.'+${p.precio}"></p></h5></li>
 							<li class="list-group-item"> <h5>Descripción <p th:text="${p.descripcion}"></p></h5></li>
+							<!--
 							<li class="list-group-item"> <h5>Cantidad</h5>
 								<input type="number" id="cantidad" name="cantidad" autocomplete="off" th:value="1" min="1" max="${p.cantidad}" required>
 							</li>
+							-->
 						</ul><hr>
 						<div style="text-align: center;">
 						<a th:href="@{/}"  class="btn btn-info">Regresar</a>
-						<button type="submit" class="btn btn-warning">Añadir al Carrito</button>
+						<button type="submit" class="btn btn-warning" id="addCarrito">Añadir al Carrito <i class="fa-solid fa-cart-shopping"></i></button>
 						</div>
 					</form>
 				</div>
@@ -57,6 +60,6 @@
 </div>
 
 <footer th:replace="layout/plantilla :: footer"></footer>
-    
+
 </body>
 </html>

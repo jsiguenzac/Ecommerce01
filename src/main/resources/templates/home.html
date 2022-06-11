@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8">
 <title>Inicio | Ecommerce</title>
-
+<link rel="stylesheet" href="/css/inicio.css"/>
  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
         <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
         <script  th:src="@{/webjars/jquery/jquery.min.js}"></script>      
@@ -22,34 +22,51 @@
 
 <div class="container">
 	
-	<header class="jumbotron my-4">
-		<img class="card-img-top" src="https://plazavea.vteximg.com.br/arquivos/Banner-HotSale-HP-D-06-12JUNIO-C.jpg" alt="logo">
-		<h3 class="display-3 text-center">Ecommerce de productos</h3>		
-	</header>
-		
-	
-		<div class="row text-center">		
-			<div class="col-lg-3 col-md-6 mb-4" th:each="p:${productos}">
-				<div class="card h-100">
-					<img class="card-img-top" th:src="@{'images/'+${p.imagen}}" th:alt="${p.imagen}">
-					<div class="card-body">
-					<h5><p class="card-text" th:text="${p.nombre}"></p></h5>				
-					<h6>Precio:<p class="card-text" th:text="'S/.'+ ${p.precio}"></p></h6>
-					<h6><p class="card-text" th:text="'Descripción: '+ ${p.descripcion}"></p></h6>
-					</div>					
-					<div class="card-footer">
-						<a th:href="@{/productos/detalle/} + ${p.idProducto}" class="btn btn-success">Ver Producto</a>
-					</div>											
-				</div>
-			</div>
-		
-					<div class="text-center p-2"  th:if="${productos == null or productos.empty }">                                
-                                <span>NINGUN PRODUCTO EN LISTA</span>                                
-                    </div>		
+	<div class="jumbotron">
+		<img class="card-img-top" src="/img/banner.jpg" alt="logo" width="80" height="120">
 						
-		</div>	
+	</div>
+	
+	
+			<div class="container text-center">
+				<h1>¡Bienvenido!</h1>
+			  <span>Creador <i class="zmdi zmdi-favorite red"></i>  By: <strong>Joel Sigüenza</strong> para <i><a href="https://cibertec.blackboard.com/webapps/login/" target="_bank" class="wsk-btn">CL2_DAWII</a></i></span>
+			</div>	
+	<div class="text-center p-2"  th:if="${productos == null or productos.empty }">                                
+	                                <span>NINGUN PRODUCTO EN LISTA</span>                                
+	</div>	
+	
+	<div class="shell">
+	  <div class="container">
+	    <div class="row">
+	      <div class="col-md-3" th:each="p:${productos}">
+	        <div class="wsk-cp-product">
+	          <div class="wsk-cp-img">
+	            <img th:src="@{'images/'+${p.imagen}}" th:alt="${p.imagen}" class="img-responsive" />
+	          </div>
+	          <div class="wsk-cp-text">
+	            <div class="category">
+	              <span th:text="'Stock: '+${p.cantidad}"></span>
+	            </div>
+	            <div class="title-product">
+	              <h3  th:text="${p.nombre}"></h3>
+	            </div>
+	            <div class="description-prod">
+	              <p th:text="'Descripción: '+ ${p.descripcion}"></p>
+	            </div>
+	            <div class="card-footer">
+	              <div class="wcf-left"><span class="price" th:text="'S/.'+ ${p.precio}"></span></div>
+	              <div class="wcf-right"><a th:href="@{/productos/detalle/} + ${p.idProducto}" class="buy-btn"><i class="fa-solid fa-cart-shopping"></i></a></div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+	</div>
+			
 </div>
-
 <footer th:replace="layout/plantilla :: footer"></footer>
     
 </body>

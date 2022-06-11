@@ -7,6 +7,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.cibertec.CL2_Ecommerce_JoelSiguenza.model.Producto;
 import com.cibertec.CL2_Ecommerce_JoelSiguenza.service.ProductoService;
 
+
 @Controller
 //@Slf4j
 @RequestMapping("/productos")
@@ -29,7 +32,7 @@ public class ProductoController {
 	
 
 	@GetMapping("")
-	public String listadoPro(Model model) {		
+	public String listadoPro(Model model, @AuthenticationPrincipal User user) {		
 		model.addAttribute("productos", productoService.listarProductos());
 		return "productos/listarProductos";
 	}
@@ -87,13 +90,18 @@ public class ProductoController {
 	}
 	
 	/////CARRITO
-	@PostMapping("/addCar")
-	public String carrito(Producto p,  Model model) {
-		
+	@PostMapping("/Carrito/{idProducto}")
+	public String carrito(Producto p, @PathVariable Long idProducto, Model model) {
+				
+		Producto pro = productoService.encontrarProducto(p);
+		/*
+		double total = Integer.parseInt(pro.getPrecio())*cantidad;
+		model.addAttribute("cant", cantidad);
+		model.addAttribute("total", total);*/
+		model.addAttribute("p", pro);
 		return "productos/carrito";
 	}
-	
-	
-	
+		
+		
 	
 }
